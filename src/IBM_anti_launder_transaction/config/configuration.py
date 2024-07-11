@@ -2,7 +2,8 @@ from IBM_anti_launder_transaction.constants import *
 from IBM_anti_launder_transaction.utils.common import read_yaml, create_directories
 from IBM_anti_launder_transaction.entity.config_entity import (DataIngestionConfig,
                                                                DataValidationConfig,
-                                                               DataTransformationConfig)
+                                                               DataTransformationConfig,
+                                                               ModelTrainerConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -32,6 +33,7 @@ class ConfigurationManager:
 
         return data_ingestion_config
     
+
     def get_data_validation_config(self) -> DataValidationConfig:
         config = self.config.data_validation
         schema = self.schema.COLUMNS
@@ -47,6 +49,7 @@ class ConfigurationManager:
 
         return data_validation_config
     
+
     def get_data_transformation_config(self) -> DataTransformationConfig:
         config = self.config.data_transformation
 
@@ -58,4 +61,31 @@ class ConfigurationManager:
             preprocessor_path=config.preprocessor_path
         )
 
-        return data_transformation_config 
+        return data_transformation_config
+
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.XGBClassifier
+        schema =  self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path = config.train_data_path,
+            test_data_path = config.test_data_path,
+            model_name = config.model_name,
+            gamma = params.gamma,
+            max_depth = params.max_depth,
+            colsample_bytree = params.colsample_bytree,
+            reg_alpha = params.reg_alpha,
+            reg_lambda = params.reg_lambda,
+            subsample = params.subsample,
+            target_column = schema.name
+            
+        )
+
+        return model_trainer_config
+            
+

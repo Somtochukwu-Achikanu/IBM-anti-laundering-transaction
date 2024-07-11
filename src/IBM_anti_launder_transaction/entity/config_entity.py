@@ -35,6 +35,9 @@ class ModelTrainerConfig:
     gamma: int
     max_depth: int
     colsample_bytree: int
+    reg_alpha: int
+    reg_lambda: int
+    subsample: int
     target_column: str
 
 
