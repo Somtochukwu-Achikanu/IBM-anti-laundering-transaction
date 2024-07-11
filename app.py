@@ -19,10 +19,10 @@ def main():
         Account_from_bank = st.text_input("Enter account from bank", value="54321")
         To_Bank = st.text_input('Enter to bank id', value="67890")
         Account_to_bank = st.text_input("Enter account to bank", value="09876")
-        Amount_Received = st.slider('Amount Received', 1.0, 100000000000000.0, step=0.01, value=1.0)
+        Amount_Received = st.slider('Amount Received', 1.0, 1000000.0, step=0.1, value=10.0)
         Receiving_Currency = st.selectbox('Receiving Currency', ['US Dollar','Euro','Yuan','Shekel','Canadian Dollar','UK Pound','Ruble','Australian Dollar',   
                                                                  'Yen','Mexican Peso','Swiss Franc','Rupee','Bitcoin','Brazil Real','Saudi Riyal','Others'])
-        Amount_Paid = st.slider('Amount Paid', 1.0, 100000000000000.0, step=0.01, value=1.0)
+        Amount_Paid = st.slider('Amount Paid', 1.0, 1000000.0, step=0.1, value=10.0)
         Payment_Currency  = st.selectbox('Payment Currency', ['US Dollar','Euro','Yuan','Shekel','Canadian Dollar','UK Pound','Ruble','Australian Dollar',   
                                                               'Yen','Mexican Peso','Swiss Franc','Rupee','Bitcoin','Brazil Real','Saudi Riyal','Others'])
         Payment_Format = st.selectbox('Payment Format', ['Cheque', 'Credit Card', 'ACH','Cash','Reinvestment','Wire','Bitcoin'])
