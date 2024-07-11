@@ -30,7 +30,7 @@ class DataTransformation:
             df = pd.read_csv(self.config.data_path)
 
             # Dropping specific columns
-            cols_to_drop = ['Timestamp', 'Amount Paid', 'Payment Currency']
+            cols_to_drop = ['Time']
             df.drop(cols_to_drop, axis=1, inplace=True)
 
             # Divide the dataset into independent and dependent features

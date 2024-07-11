@@ -1,5 +1,4 @@
-COLUMNS:
- Timestamp:          object 
+COLUMNS: 
  From Bank:          int64  
  Account:            object 
  To Bank:            int64  
@@ -10,7 +9,10 @@ COLUMNS:
  Payment Currency:   object 
  Payment Format:     object 
  Is Laundering:      int64
-
+ Year:               int64
+ Month:              int64
+ Day:                object
+ Time:               object
 
 TARGET_COLUMN:
   name: Is Laundering

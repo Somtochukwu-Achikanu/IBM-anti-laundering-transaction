@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/somtoachi-kanu/End%20to%20End%20Folder/IBM%20anti%20launder%20transaction/IBM-anti-laundering-transaction/mlruns/0/d1e09ba2cd2440718f1e273b913ffc6d/artifacts
+end_time: 1720708995013
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d1e09ba2cd2440718f1e273b913ffc6d
+run_name: shivering-asp-378
+run_uuid: d1e09ba2cd2440718f1e273b913ffc6d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1720708992601
+status: 3
+tags: []
+user_id: somtoachi-kanu

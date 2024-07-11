@@ -1,0 +1,155 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 9fa59cba1e3dc2c460bea15db4ef748c
+      size: 1040
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: 2f2caabd253ce4d802449257545da047
+      size: 876
+    outs:
+    - path: artifacts/data_ingestion/sample.zip
+      hash: md5
+      md5: 199598520a81c32d602cbda432735822
+      size: 294483
+  data_validation:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_02_data_validation.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 9fa59cba1e3dc2c460bea15db4ef748c
+      size: 1040
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_02_data_validation.py
+      hash: md5
+      md5: c02d125cd2d7c9aec5a2b963660808a0
+      size: 852
+    outs:
+    - path: artifacts/data_validation
+      hash: md5
+      md5: 0ccb3ea5849272ff03be5ab71786b9ff.dir
+      size: 23
+      nfiles: 1
+  data_transformation:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_03_data_transformation.py
+    deps:
+    - path: artifacts/data_ingestion/sample.zip
+      hash: md5
+      md5: 199598520a81c32d602cbda432735822
+      size: 294483
+    - path: config/config.yaml
+      hash: md5
+      md5: 9fa59cba1e3dc2c460bea15db4ef748c
+      size: 1040
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_03_data_transformation.py
+      hash: md5
+      md5: 0d0ad884daf5a5af37ec4aa5da2c4b5e
+      size: 993
+    outs:
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: 470679a3606c47705a6dbaae7093e89d
+      size: 363910
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 054418e861dad10a178f7705091d8d96
+      size: 592258
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 23a7ff8743630e12e4581a6e2e9e4569
+      size: 2392544
+  training:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_04_model_trainer.py
+    deps:
+    - path: artifacts/data_ingestion/HI-Medium_Trans.zip
+      hash: md5
+      md5: 9c3e58d7892afca45bcdf2bf3638ffd4
+      size: 592205398
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: 19e9500b8689d4ee7b13df624c2a2e47
+      size: 70378982
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 4db67f3b19b6053db5945183af9122ea
+      size: 1276526623
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 1c8bbb6572f09c758f19a805a57f0fd7
+      size: 5106366595
+    - path: config/config.yaml
+      hash: md5
+      md5: 75d8b04e412276c17984bac1527668a5
+      size: 1067
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_04_model_trainer.py
+      hash: md5
+      md5: 9f08475c4f6e92a1490c31fd808da15a
+      size: 820
+    outs:
+    - path: artifacts/model_trainer/model.joblib
+      hash: md5
+      md5: 23fb79a0bbda3f5f23e987c11df9183b
+      size: 451342
+  model_trainer:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_04_model_trainer.py
+    deps:
+    - path: artifacts/data_ingestion/sample.zip
+      hash: md5
+      md5: 199598520a81c32d602cbda432735822
+      size: 294483
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: 470679a3606c47705a6dbaae7093e89d
+      size: 363910
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 054418e861dad10a178f7705091d8d96
+      size: 592258
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 23a7ff8743630e12e4581a6e2e9e4569
+      size: 2392544
+    - path: config/config.yaml
+      hash: md5
+      md5: 9fa59cba1e3dc2c460bea15db4ef748c
+      size: 1040
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_04_model_trainer.py
+      hash: md5
+      md5: 9f08475c4f6e92a1490c31fd808da15a
+      size: 820
+    outs:
+    - path: artifacts/model_trainer/model.joblib
+      hash: md5
+      md5: 2d2d74db26720c8d823f10833c0c40bf
+      size: 142866
+  model_evaluation:
+    cmd: python src/IBM_anti_launder_transaction/pipeline/stage_05_model_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/sample.zip
+      hash: md5
+      md5: 199598520a81c32d602cbda432735822
+      size: 294483
+    - path: artifacts/data_transformation/preprocessor.joblib
+      hash: md5
+      md5: 470679a3606c47705a6dbaae7093e89d
+      size: 363910
+    - path: artifacts/model_trainer/model.joblib
+      hash: md5
+      md5: 2d2d74db26720c8d823f10833c0c40bf
+      size: 142866
+    - path: config/config.yaml
+      hash: md5
+      md5: 9fa59cba1e3dc2c460bea15db4ef748c
+      size: 1040
+    - path: src/IBM_anti_launder_transaction/pipeline/stage_05_model_evaluation.py
+      hash: md5
+      md5: d172620bd6589de04284022ecfce18b1
+      size: 908
+    outs:
+    - path: artifacts/model_evaluation/metrics.json
+      hash: md5
+      md5: 12898e8779192daf93016354a02c863f
+      size: 123

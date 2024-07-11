@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/somtoachi-kanu/End%20to%20End%20Folder/IBM%20anti%20launder%20transaction/IBM-anti-laundering-transaction/mlruns/0/f91fa3904e7a40a48401b8cc55362cc4/artifacts
+end_time: 1720715009378
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f91fa3904e7a40a48401b8cc55362cc4
+run_name: marvelous-mink-465
+run_uuid: f91fa3904e7a40a48401b8cc55362cc4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1720715006922
+status: 3
+tags: []
+user_id: somtoachi-kanu
